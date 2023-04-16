@@ -22,7 +22,7 @@ jobs:
     - name: Build Docker image
       run: eval "$BUILD"
     - name: Build opendbc
-      run: ${{ env.RUN }} "cd ../ && scons -j$(nproc) ${{ matrix.flags }}"
+      run: ${{ env.RUN }} "cd ../ && scons -c -j4 && scons -j$(nproc) ${{ matrix.flags }}"
     - name: Unit tests
       run: ${{ env.RUN }} "python -m unittest discover ."
 
